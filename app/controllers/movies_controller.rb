@@ -1,13 +1,15 @@
 class MoviesController < ApplicationController
-  before_filter :get_movies
+  before_filter :get_all_movies_by_year
+  before_filter :get_all_movies
 
   def index
-    @movies = get_movies
+    @movies = get_all_movies_by_year
     @movies_recent = get_all_movies
+    @movies_recent = @movies_recent.sort_by { |k, v| v[:date] }
   end
 
   def year
-    @movies = get_movies[params[:year]]
+    @movies = get_all_movies_by_year[params[:year]]
   end
 
   def selected
