@@ -3,8 +3,3 @@
     = "Year: #{movie_yearset[0]}"
     - movie_yearset[1..movie_yearset.size].each do |movies|
       = render :partial => "movies/movies", :locals => {:movies => movies}
-
-    -#- @movies.each do |movie|
-    -#  %li
-    -#    = movie
-      -#%li{:style => "background:url('#{movie[1][:logo]}')no-repeat; width: 250px; height: 375px;"}

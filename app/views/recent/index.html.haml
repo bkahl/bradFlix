@@ -1,0 +1,7 @@
+%div
+  - @movies.reverse.each do |movie|
+    %div{:style => "display:inline-block;"}
+      %div
+        = movie[1][:date]
+      %a{:href => "#{movie[1][:movie]}"}
+        %div{:style => "background:url('#{movie[1][:logo]}')no-repeat; width: 250px; height: 375px; display:inline-block;"}
