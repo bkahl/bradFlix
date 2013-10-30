@@ -24,6 +24,10 @@
 # Ignore All public files
 /public/*
 /test/*
+/doc/api/
+/doc/app/
+/doc/features.html
+/doc/specs.html
 
 # Mac finder artifacts
 .DS_Store
