@@ -19,13 +19,15 @@ gem 'therubyracer'
 gem 'dragonfly'
 gem 'rake'
 gem 'haml-rails'
-gem 'bootstrap-sass'
 gem 'font-awesome-rails'
-gem 'twitter-bootstrap-rails'
-gem 'bootstrap-will_paginate'
 gem 'angularjs-rails'
 gem 'angular-ui-rails'
 gem 'thin'
+
+
+gem 'bootstrap-sass', :git => 'git://github.com/thomas-mcdonald/bootstrap-sass.git', :branch => '3'
+gem 'bootstrap-switch-rails'
+gem 'bootstrap-select-rails'
 
 group :development do
   gem 'html2haml'

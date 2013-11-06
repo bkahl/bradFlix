@@ -1,6 +1,8 @@
 BradFlix::Application.routes.draw do
 
-  root :to => 'home#index'
+  devise_for :users
+
+  root :to => 'recent#index'
 
   #match recent
   match '/recent', :to => 'recent#index'

@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+
   before_filter :get_all_movies_by_year
   before_filter :get_all_movies
 
