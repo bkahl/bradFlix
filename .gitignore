@@ -29,6 +29,8 @@
 /doc/features.html
 /doc/specs.html
 
+/db/seeds.rb
+
 # Mac finder artifacts
 .DS_Store
 
