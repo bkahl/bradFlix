@@ -1,6 +1,6 @@
 %div
   - movies.each do |movie|
-    %div{:style => "display:inline-block;"}
+    %div{:class => "col-md-3 col-md-3 col-md-3", :style => "display:inline-block;"}
       %div
         = movie[1][:date]
       -#%a{:href => "#{movie[1][:movie]}"}

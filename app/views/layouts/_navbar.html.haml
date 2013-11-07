@@ -10,7 +10,7 @@
   / Collect the nav links, forms, and other content for toggling
   #bs-example-navbar-collapse-1.collapse.navbar-collapse
     %ul.nav.navbar-nav
-      %li.active
+      %li
         %a{:href => "/recent"} Recent
       %li
         %a{:href => "/movies"} Movies
@@ -18,4 +18,3 @@
     %ul.nav.navbar-nav.navbar-right
       %li
         = link_to 'Sign Out', destroy_user_session_path, :method => :delete
-  / /.navbar-collapse
