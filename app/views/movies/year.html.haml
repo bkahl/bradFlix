@@ -2,7 +2,7 @@
 
 %div.container
   %div
-    - @movies.each do |movie|
+    - @movies_by_selected_year.each do |movie|
       %div{:style => "display:inline-block;"}
         %div
           = movie[1][:date]

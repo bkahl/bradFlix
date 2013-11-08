@@ -2,7 +2,7 @@
 
 %div.container
   %div.row
-    - @movies.each do |movie_yearset|
+    - @movies_by_year.each do |movie_yearset|
       = "Year: #{movie_yearset[0]}"
       - movie_yearset[1..movie_yearset.size].each do |movies|
         = render :partial => "movies/movies", :locals => {:movies => movies}

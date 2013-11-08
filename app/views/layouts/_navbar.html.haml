@@ -11,9 +11,20 @@
   #bs-example-navbar-collapse-1.collapse.navbar-collapse
     %ul.nav.navbar-nav
       %li
-        %a{:href => "/recent"} Recent
+        %a{:href => "/movies/recent"} Recent
       %li
-        %a{:href => "/movies"} Movies
+
+      %li.dropdown
+        %a.dropdown-toggle{"data-toggle" => "dropdown"}
+          Movies
+          %b.caret
+        %ul.dropdown-menu
+          %li{:style => "cursor: pointer"}
+            %a{:href => "/movies"} All
+          - @all_movie_years.each do |movie_list_by_year|
+            %li.divider
+            %li
+              %a{:href => "/movies/#{movie_list_by_year[0]}"} #{movie_list_by_year[0]}
 
     %ul.nav.navbar-nav.navbar-right
       %li
