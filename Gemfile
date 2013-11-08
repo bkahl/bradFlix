@@ -10,7 +10,6 @@ gem 'jquery-rails'
 gem 'bundler'
 gem 'devise'
 gem 'will_paginate'
-#gem 'passenger'
 gem 'newrelic_rpm'
 gem 'jquery-rails'
 gem 'geokit'
@@ -23,6 +22,8 @@ gem 'font-awesome-rails'
 gem 'angularjs-rails'
 gem 'angular-ui-rails'
 gem 'thin'
+
+gem 'httparty'
 
 
 gem 'bootstrap-sass', :git => 'git://github.com/thomas-mcdonald/bootstrap-sass.git', :branch => '3'

@@ -7,4 +7,5 @@
         %div
           = movie[1][:date]
         -#%a{:href => "#{movie[1][:movie]}"}
-        %div{:style => "background:url('#{movie[1][:logo]}')no-repeat; width: 250px; height: 375px; display:inline-block;"}
+        %a{:href => "/movies/#{movie[1][:api_name]}"}
+          %div{:style => "background:url('#{movie[1][:logo]}')no-repeat; width: 250px; height: 375px; display:inline-block;"}

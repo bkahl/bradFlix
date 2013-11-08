@@ -35,7 +35,9 @@ class ApplicationController < ActionController::Base
           curr_mp4 = curr_mp4.split(remove_path)[1]
         end
 
-        movies[curr_year][curr_movie] = {path: curr_movie_path.split(remove_path)[1], name: curr_movie, movie: curr_mp4, logo: curr_logo, date: date_modified}
+        movie_api_name = curr_movie.gsub(" ", "+")
+
+        movies[curr_year][curr_movie] = {path: curr_movie_path.split(remove_path)[1], api_name: movie_api_name, api: "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey="+movie_api_name+"&qwwcbmq36xddhrcbpwwqmb5m&q=&page_limit=1", name: curr_movie, movie: curr_mp4, logo: curr_logo, date: date_modified}
       end
     end
 
@@ -70,11 +72,43 @@ class ApplicationController < ActionController::Base
           curr_mp4 = curr_mp4.split(remove_path)[1]
         end
 
-        movies[curr_movie] = {path: curr_movie_path.split(remove_path)[1], name: curr_movie, movie: curr_mp4, logo: curr_logo, year: curr_year, date: date_modified.to_s}
+        movie_api_name = curr_movie.gsub(" ", "+")
+
+        movies[curr_movie] = {path: curr_movie_path.split(remove_path)[1], api_name: movie_api_name, api: "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey="+movie_api_name+"&qwwcbmq36xddhrcbpwwqmb5m&q=&page_limit=1", name: curr_movie, movie: curr_mp4, logo: curr_logo, year: curr_year, date: date_modified.to_s}
+
+        puts movies[curr_movie]
       end
     end
 
     return movies
+  end
+
+  #need to make faster calls
+  def rt_api_getMovie(movie_lookup)
+
+    movie_name = movie_lookup
+    puts movie_name
+
+    rotten_tomatoes_api_key = "qwwcbmq36xddhrcbpwwqmb5m"+"&q="+movie_name+"&page_limit=1"
+    puts rotten_tomatoes_api_key
+
+    movie_call = HTTParty.get "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey="+rotten_tomatoes_api_key
+    puts movie_call
+
+    json = JSON.parse(movie_call)
+    puts json
+
+    puts json["movies"][0]
+
+    return json["movies"][0]
+
+    #puts json["movies"][0]
+    #puts json["movies"][0]["ratings"]["critics_score"]
+    #puts json["movies"][0]["ratings"]["audience_score"]
+    #puts json["movies"][0]["synopsis"]
+    #puts json["movies"][0]["runtime"]
+    #puts json["movies"][0]["mpaa_rating"]
+
   end
 
 end

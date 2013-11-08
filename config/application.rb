@@ -12,6 +12,18 @@ end
 module BradFlix
   class Application < Rails::Application
 
+    movie_name = "Toy+Story+3"
+    rotten_tomatoes_api_key = "qwwcbmq36xddhrcbpwwqmb5m"+"&q="+movie_name+"&page_limit=1"
+    movie_call = HTTParty.get "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey="+rotten_tomatoes_api_key
+    json = JSON.parse(movie_call)
+
+    puts json["movies"][0]
+    puts json["movies"][0]["ratings"]["critics_score"]
+    puts json["movies"][0]["ratings"]["audience_score"]
+    puts json["movies"][0]["synopsis"]
+    puts json["movies"][0]["runtime"]
+    puts json["movies"][0]["mpaa_rating"]
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
