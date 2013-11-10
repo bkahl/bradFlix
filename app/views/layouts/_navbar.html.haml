@@ -1,31 +1,33 @@
-%nav.navbar.navbar-default{:role => "navigation"}
-  / Brand and toggle get grouped for better mobile display
-  .navbar-header
-    %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
-      %span.sr-only Toggle navigation
-      %span.icon-bar
-      %span.icon-bar
-      %span.icon-bar
-    %a.navbar-brand{:href => "#"} BradFlix
-  / Collect the nav links, forms, and other content for toggling
-  #bs-example-navbar-collapse-1.collapse.navbar-collapse
-    %ul.nav.navbar-nav
-      %li
-        %a{:href => "/movies/recent"} Recent
-      %li
+%header.navbar.navbar-default.navbar-fixed-top{:role => "banner"}
+  .container
+    %nav{:role => "navigation"}
+      / Brand and toggle get grouped for better mobile display
+      .navbar-header
+        %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.navbar-brand{:href => "#"} BradFlix
+      / Collect the nav links, forms, and other content for toggling
+      #bs-example-navbar-collapse-1.collapse.navbar-collapse
+        %ul.nav.navbar-nav
+          %li
+            %a{:href => "/movies/recent"} Recent
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+              Movies
+              %b.caret
+            %ul.dropdown-menu
+              %li
+                %a{:href => "/movies"} All
+              - @all_movie_years.each do |movie_list_by_year|
+                %li.divider
+                %li
+                  %a{:href => "/movies/#{movie_list_by_year[0]}"} #{movie_list_by_year[0]}
 
-      %li.dropdown
-        %a.dropdown-toggle{"data-toggle" => "dropdown"}
-          Movies
-          %b.caret
-        %ul.dropdown-menu
-          %li{:style => "cursor: pointer"}
-            %a{:href => "/movies"} All
-          - @all_movie_years.each do |movie_list_by_year|
-            %li.divider
-            %li
-              %a{:href => "/movies/#{movie_list_by_year[0]}"} #{movie_list_by_year[0]}
+        %ul.nav.navbar-nav.navbar-right
+          %li
+            = link_to 'Sign Out', destroy_user_session_path, :method => :delete
 
-    %ul.nav.navbar-nav.navbar-right
-      %li
-        = link_to 'Sign Out', destroy_user_session_path, :method => :delete
+      / /.navbar-collapse

@@ -1,0 +1,52 @@
+= render :partial => "layouts/navbar"
+
+.bradflix-description
+  .container
+    %div.row
+      %div.page-header
+        %h2
+          = @movie_description[:rotten_api]["title"]
+
+      %div
+        -# Link to movie
+        %a{:href => "#{@movie_description[:movie]}"}
+          %img.img-responsive{:src => "#{@movie_description[:logo]}", :alt => "#{@movie_description[:logo]}", :style => "max-width: 250px;"}
+
+      %br
+
+      %div
+        // Certified Fresh, Rotten
+        %span.strong Critics Score:
+        %span{:class => "#{@movie_description[:rotten_api]["ratings"]["critics_rating"].downcase.gsub(" ", "_")}"}
+        %span
+          = @movie_description[:rotten_api]["ratings"]["critics_score"]
+
+      %div
+        // Upright, Spilled
+        %span.strong Audience Score:
+        %span{:class => "#{@movie_description[:rotten_api]["ratings"]["audience_rating"].downcase.gsub(" ", "_")}"}
+        %span
+          = @movie_description[:rotten_api]["ratings"]["audience_score"]
+
+      %div
+        %span.strong Rating:
+        %span
+          = @movie_description[:rotten_api]["mpaa_rating"]
+
+      %div
+        %span.strong Year:
+        %span
+          = @movie_description[:rotten_api]["year"]
+
+      %div
+        %span.strong Runtime:
+        %span
+          = @movie_description[:rotten_api]["runtime"]
+
+      %div
+        %h3 Synopsis
+      %div
+        = @movie_description[:rotten_api]["synopsis"]
+
+    -#%div
+    -#  = @movie_description

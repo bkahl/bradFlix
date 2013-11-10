@@ -8,6 +8,6 @@ BradFlix::Application.routes.draw do
   match '/movies', :to => 'movies#index'
   match '/movies/recent', :to => 'movies#recent'
   match '/movies/:year', :to => 'movies#year', :as => 'movie_year'
-  match '/movies/:year/:movie_name', :to => 'movies#description'
+  match '/movies/:year/:movie_name', :to => 'movies#description', :as => 'movie_name'
 
 end

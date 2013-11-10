@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   before_filter :authenticate_user!
 
+  before_filter :get_all_movies_by_year
+  before_filter :get_all_movies
+  #before_filter :get_selected_movie
+
   protect_from_forgery
 
   def index
@@ -37,11 +41,40 @@ class ApplicationController < ActionController::Base
 
         movie_api_name = curr_movie.gsub(" ", "+")
 
-        movies[curr_year][curr_movie] = {path: curr_movie_path.split(remove_path)[1], api_name: movie_api_name, api: "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey="+movie_api_name+"&qwwcbmq36xddhrcbpwwqmb5m&q=&page_limit=1", name: curr_movie, movie: curr_mp4, logo: curr_logo, date: date_modified}
+        movies[curr_year][curr_movie] = {path: curr_movie_path.split(remove_path)[1], api_name: movie_api_name, api: "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey="+movie_api_name+"&qwwcbmq36xddhrcbpwwqmb5m&q=&page_limit=1", name: curr_movie, movie: curr_mp4, logo: curr_logo, year: curr_year, date: date_modified}
+
       end
     end
 
     return movies
+  end
+
+  def get_selected_movie(year, movie)
+
+      path = '/Volumes/Mac.Movies/Ripped DVDs/Movies/'
+      remove_path = '/Volumes/Mac.Movies'
+
+      rt_api = rt_api_getMovie(movie)
+      puts rt_api
+
+      movie = movie.gsub("+", " ")
+      movie_path = path+year+'/'+movie
+      puts movie_path
+
+      curr_logo = Dir.glob(movie_path+"/*.jpg")
+      curr_logo = curr_logo[0]
+      curr_logo = '/'+curr_logo.split(remove_path+'/')[1]
+      puts curr_logo
+
+      curr_mp4 = Dir.glob(movie_path+"/*.m4v")
+      curr_mp4 = curr_mp4[0]
+      curr_mp4 = '/'+curr_mp4.split(remove_path+'/')[1]
+      puts curr_mp4
+
+      movie_hash = {movie: curr_mp4, logo: curr_logo, rotten_api: rt_api}
+      puts movie_hash
+
+      return movie_hash
   end
 
   def get_all_movies
@@ -76,7 +109,6 @@ class ApplicationController < ActionController::Base
 
         movies[curr_movie] = {path: curr_movie_path.split(remove_path)[1], api_name: movie_api_name, api: "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey="+movie_api_name+"&qwwcbmq36xddhrcbpwwqmb5m&q=&page_limit=1", name: curr_movie, movie: curr_mp4, logo: curr_logo, year: curr_year, date: date_modified.to_s}
 
-        puts movies[curr_movie]
       end
     end
 
@@ -87,18 +119,18 @@ class ApplicationController < ActionController::Base
   def rt_api_getMovie(movie_lookup)
 
     movie_name = movie_lookup
-    puts movie_name
+    #puts movie_name
 
     rotten_tomatoes_api_key = "qwwcbmq36xddhrcbpwwqmb5m"+"&q="+movie_name+"&page_limit=1"
-    puts rotten_tomatoes_api_key
+    #puts rotten_tomatoes_api_key
 
     movie_call = HTTParty.get "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey="+rotten_tomatoes_api_key
-    puts movie_call
+    #puts movie_call
 
     json = JSON.parse(movie_call)
-    puts json
+    #puts json
 
-    puts json["movies"][0]
+    #puts json["movies"][0]
 
     return json["movies"][0]
 
