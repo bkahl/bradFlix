@@ -12,18 +12,32 @@
   margin: 30px 0 0 0;
 }
 
-.certified_fresh {
+.certified_fresh,
+.rotten,
+.upright,
+.spilled,
+.fresh {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+}
 
+.certified_fresh {
+  background: url(image_path('rotten_tomatoes/certified_fresh.png')) no-repeat;
 }
 
 .rotten {
-
+  background: url(image_path('rotten_tomatoes/rotten.png')) no-repeat;
 }
 
 .upright {
-
+  background: url(image_path('rotten_tomatoes/upright.png')) no-repeat;
 }
 
 .spilled {
+  background: url(image_path('rotten_tomatoes/spilled.png')) no-repeat;
+}
 
+.fresh {
+  background: url(image_path('rotten_tomatoes/fresh.png')) no-repeat;
 }

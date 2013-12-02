@@ -20,6 +20,7 @@
         %span{:class => "#{@movie_description[:rotten_api]["ratings"]["critics_rating"].downcase.gsub(" ", "_")}"}
         %span
           = @movie_description[:rotten_api]["ratings"]["critics_score"]
+        %span %
 
       %div
         // Upright, Spilled
@@ -27,6 +28,7 @@
         %span{:class => "#{@movie_description[:rotten_api]["ratings"]["audience_rating"].downcase.gsub(" ", "_")}"}
         %span
           = @movie_description[:rotten_api]["ratings"]["audience_score"]
+        %span %
 
       %div
         %span.strong Rating:
@@ -42,6 +44,7 @@
         %span.strong Runtime:
         %span
           = @movie_description[:rotten_api]["runtime"]
+        %span mins
 
       %div
         %h3 Synopsis
