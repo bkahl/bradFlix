@@ -2,6 +2,12 @@
 
 %div.bradflix-year
   %div.container
+
+    %div.movieCount
+      %span
+        = @count_all_movies
+      %span Total Movies
+
     %div.row
     - @movies_by_selected_year.each do |movie|
       %div{:style => "display:inline-block;"}

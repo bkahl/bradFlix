@@ -1,7 +1,19 @@
 .bradflix-movies,
 .bradflix-recent,
 .bradflix-year, {
-  margin: 90px 0 0 0;
+  margin: 70px 0 0 0;
+
+  .container {
+    margin-bottom: 30px;
+  }
+}
+
+.movieCount {
+  width: 300px;
+  margin: 0 auto 8px;
+  font-size: 14px;
+  color: #777;
+  text-align: center;
 }
 
 .strong {
