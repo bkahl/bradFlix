@@ -9,18 +9,20 @@
           %span.icon-bar
           %span.icon-bar
         %a.navbar-brand{:href => "/movies"} BradFlix
+
       / Collect the nav links, forms, and other content for toggling
       #bs-example-navbar-collapse-1.collapse.navbar-collapse
         %ul.nav.navbar-nav
-          %li
-            %a{:href => "/movies/recent"} Recent
-          %li.dropdown
+          %li.dropdown.hidden-md.hidden-lg
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
               Movies
               %b.caret
             %ul.dropdown-menu
               %li
-                %a{:href => "/movies"} All
+                %a{:href => "/movies/recent"} Recently Added
+              %li.divider
+              %li
+                %a{:href => "/movies"} Alphabetically
               - @all_movie_years.each do |movie_list_by_year|
                 %li.divider
                 %li

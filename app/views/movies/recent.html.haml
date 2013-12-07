@@ -9,7 +9,11 @@
       %span Total Movies
 
     %div.row
-      - @movies_recent.reverse.each do |movie|
-        %div{:style => "display:inline-block;"}
-          %a{:href => "/movies/#{movie[1][:year]}/#{movie[1][:api_name]}"}
-            %img.img-responsive{:src => "#{movie[1][:logo]}", :alt => "#{movie[1][:name]}", :style => "max-width: 120px;"}
+      %div.col-md-2.hidden-xs.hidden-sm
+        = render :partial => "layouts/sidebar"
+
+      %div.col-md-10
+        - @movies_recent.reverse.each do |movie|
+          %div{:style => "display:inline-block;"}
+            %a{:href => "/movies/#{movie[1][:year]}/#{movie[1][:api_name]}"}
+              %img.img-responsive{:src => "#{movie[1][:logo]}", :alt => "#{movie[1][:name]}", :style => "max-width: 120px;"}
