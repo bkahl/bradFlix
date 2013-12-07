@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
   def year
     @count_all_movies = get_all_movies_by_year[params[:year]].size
     @all_movie_years = get_all_movies_by_year.reverse_each
-    @movies_by_selected_year = get_all_movies_by_year[params[:year]].sort_by { |k, v| v[:date] }.reverse_each
+    @movies_by_selected_year = get_all_movies_by_year[params[:year]].sort_by { |k, v| v[:name] }
   end
 
   def recent
