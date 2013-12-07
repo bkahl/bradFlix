@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
 
   before_filter :get_all_movies_by_year
   before_filter :get_all_movies
-  #before_filter :get_selected_movie
 
   protect_from_forgery
 

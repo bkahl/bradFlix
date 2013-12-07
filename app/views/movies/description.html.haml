@@ -7,7 +7,7 @@
         %h2
           = @movie_description[:rotten_api]["title"]
 
-      %div
+      %div.artwork
         -# Link to movie
         %a{:href => "#{@movie_description[:movie]}"}
           %img.img-responsive{:src => "#{@movie_description[:logo]}", :alt => "#{@movie_description[:logo]}", :style => "max-width: 250px;"}
@@ -47,9 +47,17 @@
         %span mins
 
       %div
-        %h3 Synopsis
+        %h3 Cast
       %div
-        = @movie_description[:rotten_api]["synopsis"]
+        - @movie_description[:rotten_api]["abridged_cast"].each do |actor|
+          %span
+            = actor["name"]
+          %br
 
-    -#%div
-    -#  = @movie_description
+      -# Show Synopsis if value isn't blank
+      - if @movie_description[:rotten_api]["synopsis"].blank?
+      - else
+        %div
+          %h3 Synopsis
+        %div
+          = @movie_description[:rotten_api]["synopsis"]
