@@ -1,11 +1,13 @@
 = render :partial => "layouts/navbar"
 
+= render :partial => "layouts/search"
+
+= render :partial => "layouts/movie-count"
+
 %div.bradflix-movies
   %div.container
 
-    = render :partial => "layouts/search"
-
-    %div.row{:style => "margin: 25px 0 0 0;"}
+    %div.row
       %div.col-md-2.hidden-xs.hidden-sm
         = render :partial => "layouts/sidebar"
 

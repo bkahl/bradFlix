@@ -10,6 +10,7 @@
   -moz-border-radius: 8px;
   border-radius: 8px;
   outline: none;
+  backgrounnd-color: #fff;
 }
 
 .tt-query {
@@ -59,4 +60,8 @@
 
 .twitter-typeahead {
   width: 100%;
+}
+
+.form-group {
+  margin: 0;
 }

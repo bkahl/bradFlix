@@ -82,7 +82,7 @@
 .bradflix-sidebar {
   .nav {
     &.sidebar {
-      width: 156px;
+//      width: 156px;
 
       li {
         &.active {
@@ -93,4 +93,8 @@
       }
     }
   }
+}
+
+.navbar {
+  margin: 0;
 }
