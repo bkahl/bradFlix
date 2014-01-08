@@ -17,8 +17,12 @@
     %body{:class => "#{params[:year]}"}
 
   = yield
-  -#%p.notice= notice
-  -#%p.alert= alert
+
+  %div.container{:style => "margin-top: 25px;"}
+    -#%div.alert.alert-warning= notice
+    %div.alert.alert-danger
+      = alert
+
   = javascript_include_tag "application"
 
   :javascript
