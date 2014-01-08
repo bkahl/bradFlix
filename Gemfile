@@ -7,6 +7,7 @@ gem 'mysql2'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'bundler'
 gem 'devise'
 gem 'will_paginate'

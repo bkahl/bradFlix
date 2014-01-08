@@ -9,10 +9,65 @@
     = stylesheet_link_tag "application", :media => "all"
     = csrf_meta_tags
 
-  %body
-    = yield
+    %script{src: "http://code.jquery.com/jquery-2.0.2.js"}
 
-    -#%p.notice= notice
-    -#%p.alert= alert
+  - if params[:nav] != "year"
+    %body{:class => "#{params[:nav]}"}
+  - else
+    %body{:class => "#{params[:year]}"}
 
-    = javascript_include_tag "application"
+  = yield
+  -#%p.notice= notice
+  -#%p.alert= alert
+  = javascript_include_tag "application"
+
+  :javascript
+    $(function() {
+
+      var movies = [];
+      var movies_hash = [];
+
+      for (var key in #{@movie_names}) {
+
+        if (#{@movie_names}.hasOwnProperty(key)) {
+
+          var movie = #{@movie_names}[key].movie,
+              movie_split_length = movie.split("/").length,
+              movie_name = movie.split("/")[movie_split_length-1].split(".m")[0];
+
+          movies.push(movie_name);
+
+          var movie_hash = {
+            "dir_name" : #{@movie_names}[key].dir_name,
+            "year" : #{@movie_names}[key].year,
+            "api_name" : #{@movie_names}[key].api_name,
+            "movie_name" : movie_name
+          };
+
+          //console.log(movie_hash.movie_name+" => "+movie_hash.year);
+
+          movies_hash.push(movie_hash);
+        }
+      }
+
+      $(".typeahead").typeahead({
+        name: 'movies',
+        local: movies
+      });
+
+      $(".typeahead").keypress(function(event) {
+        if (event.which == 13) {
+          event.preventDefault();
+
+          var searched_movie = this.value;
+
+          movies_hash.forEach(function(obj) {
+            if(searched_movie === obj.movie_name) {
+              var movie_path = "/movies/"+obj.year+"/"+obj.api_name;
+              console.log("movie path => "+movie_path);
+              window.location = movie_path;
+            }
+          });
+        }
+      });
+    });

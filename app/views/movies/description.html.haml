@@ -25,7 +25,9 @@
       %div
         // Upright, Spilled
         %span.strong Audience Score:
-        %span{:class => "#{@movie_description[:rotten_api]["ratings"]["audience_rating"].downcase.gsub(" ", "_")}"}
+        - if @movie_description[:rotten_api]["ratings"]["audience_rating"].blank?
+        - else
+          %span{:class => "#{@movie_description[:rotten_api]["ratings"]["audience_rating"].downcase.gsub(" ", "_")}"}
         %span
           = @movie_description[:rotten_api]["ratings"]["audience_score"]
         %span %

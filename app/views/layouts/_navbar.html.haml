@@ -1,9 +1,9 @@
-%header.navbar.navbar-default.navbar-fixed-top{:role => "banner"}
+%header.navbar.navbar-default.navbar-fixed-top{:role => "banner", :style => "position: relative; z-index: 0;"}
   .container
     %nav{:role => "navigation"}
       / Brand and toggle get grouped for better mobile display
       .navbar-header
-        %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+        %button.navbar-toggle.visible-sm{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
           %span.sr-only Toggle navigation
           %span.icon-bar
           %span.icon-bar
@@ -13,7 +13,7 @@
       / Collect the nav links, forms, and other content for toggling
       #bs-example-navbar-collapse-1.collapse.navbar-collapse
         %ul.nav.navbar-nav
-          %li.dropdown.hidden-md.hidden-lg
+          %li.dropdown.hidden-md.hidden-lg.hidden-sm
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
               Movies
               %b.caret

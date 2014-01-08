@@ -3,12 +3,20 @@
 %div.bradflix-recent
   %div.container
 
+    %div{:style => "width: 300px; margin: 0 auto 8px; text-align: center; font-size: 14px; color: #777;"}
+      = params[:nav]
+
     %div.movieCount
       %span
         = @count_all_movies
       %span Total Movies
 
-    %div.row
+    %div{:style => "width: 415px; margin: 0 auto 8px; text-align: center; font-size: 14px; color: #777; position: none;"}
+      %form.navbar-form.navbar-left{role: "search"}
+        .form-group
+          %input.typeahead.tt-query.form-control{autocomplete: "off", dir: "auto", placeholder: "search", spellcheck: "false", style: "position: relative; vertical-align: top; background-color: transparent;", type: "text"}
+
+    %div.row{:style => "margin: 75px 0 0 0;"}
       %div.col-md-2.hidden-xs.hidden-sm
         = render :partial => "layouts/sidebar"
 
@@ -17,3 +25,4 @@
           %div{:style => "display:inline-block;"}
             %a{:href => "/movies/#{movie[1][:year]}/#{movie[1][:api_name]}"}
               %img.img-responsive{:src => "#{movie[1][:logo]}", :alt => "#{movie[1][:name]}", :style => "max-width: 120px;"}
+
