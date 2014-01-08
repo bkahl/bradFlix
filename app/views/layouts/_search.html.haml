@@ -1,0 +1,13 @@
+%div.movieTitleAndCount
+
+  - if params[:nav] == "year"
+    %span
+      = "#{params[:year]} - #{@count_all_movies} Total Movies"
+  - elsif params[:nav] != nil
+    %span
+      = "#{params[:nav]} - #{@count_all_movies} Total Movies"
+
+%div{:style => "margin: 0 auto 8px; text-align: center; font-size: 14px; color: #777; position: none;"}
+  %form{role: "search"}
+    .form-group
+      %input.typeahead.tt-query.form-control{autocomplete: "off", dir: "auto", placeholder: "search", spellcheck: "false", style: "width: 100%;", type: "text"}

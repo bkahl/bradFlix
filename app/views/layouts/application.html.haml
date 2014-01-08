@@ -43,9 +43,7 @@
             "api_name" : #{@movie_names}[key].api_name,
             "movie_name" : movie_name
           };
-
           //console.log(movie_hash.movie_name+" => "+movie_hash.year);
-
           movies_hash.push(movie_hash);
         }
       }
@@ -70,4 +68,14 @@
           });
         }
       });
+
+      // Set current route to active within the sidebar navigation
+      if ("#{params[:nav]}" === "year") {
+        $(".#{params[:year]}").addClass("active");
+      } else if ("#{params[:nav]}" === "Recently Added") {
+        $(".recently-added").addClass("active");
+      } else if ("#{params[:nav]}" === "Alphabetically") {
+        $(".alphabetically").addClass("active");
+      }
+
     });

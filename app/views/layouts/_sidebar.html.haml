@@ -1,9 +1,9 @@
 %div.bradflix-sidebar
   %ul.nav.sidebar
-    %li
+    %li.recently-added
       %a{:href => "/movies/recent"} Recently Added
-    %li
+    %li.alphabetically
       %a{:href => "/movies"} Alphabetically
     - @all_movie_years.each do |movie_list_by_year|
-      %li
+      %li{:class => "#{movie_list_by_year[0].downcase}"}
         %a{:href => "/movies/#{movie_list_by_year[0]}"} #{movie_list_by_year[0]}

@@ -10,9 +10,16 @@
 
 .bradflix-movies,
 .bradflix-recent,
+.bradflix-year,
+.bradflix-description {
+  .row {
+    padding: 0 15px;
+  }
+}
+
+.bradflix-movies,
+.bradflix-recent,
 .bradflix-year, {
-//  position: relative;
-//  z-index: -1;
   margin: 15px 0 0 0;
 
   .container {
@@ -20,9 +27,8 @@
   }
 }
 
-.movieCount {
-  width: 300px;
-  margin: 0 auto 8px;
+.movieTitleAndCount {
+  margin: 0 0 8px 0;
   font-size: 14px;
   color: #777;
   text-align: center;
@@ -38,7 +44,9 @@
 }
 
 .bradflix-description {
-  margin: 30px 0 0 0;
+  .page-header {
+    margin: 0 0 20px;
+  }
 }
 
 .certified_fresh,
@@ -69,4 +77,20 @@
 
 .fresh {
   background: url(image_path('rotten_tomatoes/fresh.png')) no-repeat;
+}
+
+.bradflix-sidebar {
+  .nav {
+    &.sidebar {
+      width: 156px;
+
+      li {
+        &.active {
+          a {
+            background: #ddd;
+          }
+        }
+      }
+    }
+  }
 }
