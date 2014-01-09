@@ -2,7 +2,7 @@ BradFlix::Application.routes.draw do
 
   devise_for :users
 
-  root :to => 'movies#recent'
+  root :to => 'movies#recent', :nav => 'Recently Added'
 
   #match movie
   match '/movies', :to => 'movies#index', :nav => 'Alphabetically'

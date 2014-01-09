@@ -11,6 +11,8 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 
+//= require vendors/jquery-2.0.2
 //= require jquery_ujs
 //= require vendors/bootstrap
+//= require vendors/jquery.lazyload
 //= require vendors/typeahead

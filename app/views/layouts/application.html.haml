@@ -9,77 +9,76 @@
     = stylesheet_link_tag "application", :media => "all"
     = csrf_meta_tags
 
-    %script{src: "http://code.jquery.com/jquery-2.0.2.js"}
-
   - if params[:nav] != "year"
-    %body{:class => "#{params[:nav]}"}
+    %body.bradflix{:class => "#{params[:nav]}"}
+  - elsif params[:nav] == "login"
+    %body.bradflix{:class => "#{params[:nav]}"}
   - else
-    %body{:class => "#{params[:year]}"}
+    %body.bradflix{:class => "#{params[:year]}"}
 
   = yield
 
-  %div.container{:style => "margin-top: 25px;"}
-    -#%div.alert.alert-warning= notice
-    %div.alert.alert-danger
-      = alert
-
   = javascript_include_tag "application"
 
-  :javascript
-    $(function() {
+  - if params[:nav] == "year" or params[:nav] == "Alphabetically" or params[:nav] == "Recently Added"
+    :javascript
+      $(function() {
 
-      var movies = [];
-      var movies_hash = [];
+        var movies = [];
+        var movies_hash = [];
 
-      for (var key in #{@movie_names}) {
+        for (var key in #{@movie_names}) {
+          if (#{@movie_names}.hasOwnProperty(key)) {
 
-        if (#{@movie_names}.hasOwnProperty(key)) {
-
-          var movie = #{@movie_names}[key].movie,
+            var movie = #{@movie_names}[key].movie,
               movie_split_length = movie.split("/").length,
               movie_name = movie.split("/")[movie_split_length-1].split(".m")[0];
 
-          movies.push(movie_name);
+            movies.push(movie_name);
 
-          var movie_hash = {
-            "dir_name" : #{@movie_names}[key].dir_name,
-            "year" : #{@movie_names}[key].year,
-            "api_name" : #{@movie_names}[key].api_name,
-            "movie_name" : movie_name
-          };
-          //console.log(movie_hash.movie_name+" => "+movie_hash.year);
-          movies_hash.push(movie_hash);
+            var movie_hash = {
+              "dir_name" : #{@movie_names}[key].dir_name,
+              "year" : #{@movie_names}[key].year,
+              "api_name" : #{@movie_names}[key].api_name,
+              "movie_name" : movie_name
+            };
+            //console.log(movie_hash.movie_name+" => "+movie_hash.year);
+            movies_hash.push(movie_hash);
+          }
         }
-      }
 
-      $(".typeahead").typeahead({
-        name: 'movies',
-        local: movies
-      });
+        $(".typeahead").typeahead({
+          name: 'movies',
+          local: movies
+        });
 
-      $(".typeahead").keypress(function(event) {
-        if (event.which == 13) {
-          event.preventDefault();
+        $(".typeahead").keypress(function(event) {
+          if (event.which == 13) {
+            event.preventDefault();
 
-          var searched_movie = this.value;
+            var searched_movie = this.value;
 
-          movies_hash.forEach(function(obj) {
-            if(searched_movie === obj.movie_name) {
-              var movie_path = "/movies/"+obj.year+"/"+obj.api_name;
-              console.log("movie path => "+movie_path);
-              window.location = movie_path;
-            }
-          });
+            movies_hash.forEach(function(obj) {
+              if(searched_movie === obj.movie_name) {
+                var movie_path = "/movies/"+obj.year+"/"+obj.api_name;
+                console.log("movie path => "+movie_path);
+                window.location = movie_path;
+              }
+            });
+          }
+        });
+
+        // Set current route to active within the sidebar navigation
+        if ("#{params[:nav]}" === "year") {
+          $(".#{params[:year]}").addClass("active");
+        } else if ("#{params[:nav]}" === "Recently Added") {
+          $(".recently-added").addClass("active");
+        } else if ("#{params[:nav]}" === "Alphabetically") {
+          $(".alphabetically").addClass("active");
         }
+
+        $("img.lazy").lazyload({
+            threshold : 600
+        });
+
       });
-
-      // Set current route to active within the sidebar navigation
-      if ("#{params[:nav]}" === "year") {
-        $(".#{params[:year]}").addClass("active");
-      } else if ("#{params[:nav]}" === "Recently Added") {
-        $(".recently-added").addClass("active");
-      } else if ("#{params[:nav]}" === "Alphabetically") {
-        $(".alphabetically").addClass("active");
-      }
-
-    });

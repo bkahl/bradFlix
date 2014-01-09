@@ -1,12 +1,3 @@
-%div
-  - movies.each do |movie|
-    %div{:style => "display:inline-block;"}
-      -# List Date in mtime
-      -#%div
-      -#  = movie[1][:date]
-
-      -# Link to movie
-      -#%a{:href => "#{movie[1][:movie]}"}
-
-      %a{:href => "/movies/#{movie[1][:year]}/#{movie[1][:api_name]}"}
-        %img.img-responsive{:src => "#{movie[1][:logo]}", :alt => "#{movie[1][:name]}", :style => "max-width: 120px;"}
+%div{:style => "display:inline-block;"}
+  %a{:href => "/movies/#{movie[1][:year]}/#{movie[1][:api_name]}"}
+    %img.img-responsive.lazy{"data-original" => "#{movie[1][:logo]}", :alt => "#{movie[1][:name]}", :style => "max-width: 120px;", :width => "120px;"}

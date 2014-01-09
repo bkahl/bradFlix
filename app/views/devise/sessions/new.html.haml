@@ -3,7 +3,6 @@
 %div.container
   = render :partial => "layouts/logo_signin"
 
-  //float:left;width:70%;margin: 70px 30px 0 40px;
   = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "form-horizontal", :style => ""}) do |f|
 
     %div.form-group.row
@@ -12,24 +11,17 @@
         = f.email_field :email, :autofocus => true, :placeholder => "Email", :class => "form-control"
 
     %div.form-group.row
-      -#= f.label :password
-      -#%br/
-      -#= f.password_field :password
 
       %label.col-sm-2.control-label{for: "user_password"} Password
       .col-sm-10
         = f.password_field :password, :autofocus => true, :placeholder => "Password", :class => "form-control"
 
-    -#- if devise_mapping.rememberable?
-    -#  %div.form-group
-    -#    = f.check_box :remember_me
-    -#    = f.label :remember_me
-        -#.col-sm-offset-2.col-sm-10
-        -#  .checkbox
-        -#    = f.label :remember_me
-        -#    = f.check_box :remember_me
-
-
     %div.form-group.row
       %div{:class => "col-sm-offset-2 col-sm-10"}
         %button{:type => "submit", :class => "btn btn-default"} Sign in
+
+- if !alert.blank?
+  %div.container{:style => "margin-top: 25px;"}
+    -#%div.alert.alert-warning= notice
+    %div.alert.alert-danger
+      = alert

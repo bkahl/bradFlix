@@ -13,6 +13,4 @@
 
       %div.col-md-10
         - @movies_by_selected_year.each do |movie|
-          %div{:style => "display:inline-block;"}
-            %a{:href => "/movies/#{movie[1][:year]}/#{movie[1][:api_name]}"}
-              %img.img-responsive{:src => "#{movie[1][:logo]}", :alt => "#{movie[1][:name]}", :style => "max-width: 120px;"}
+          = render :partial => "movies/movies", :locals => {:movie => movie}
