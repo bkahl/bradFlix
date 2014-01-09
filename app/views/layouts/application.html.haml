@@ -20,7 +20,7 @@
 
   = javascript_include_tag "application"
 
-  - if params[:nav] == "year" or params[:nav] == "Alphabetically" or params[:nav] == "Recently Added"
+  - if params[:nav] == "year" or params[:nav] == "Alphabetically" or params[:nav] == "Recently Added" or params[:nav] == "description"
     :javascript
       $(function() {
 
@@ -78,7 +78,10 @@
         }
 
         $("img.lazy").lazyload({
-            threshold : 600
+            //event: "click",
+            effect : "fadeIn",
+            threshold : 200,
+            failure_limit : 10
         });
 
       });
