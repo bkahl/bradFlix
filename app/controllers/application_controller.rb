@@ -101,12 +101,15 @@ class ApplicationController < ActionController::Base
         curr_mp4 = curr_mp4[0]
 
         unless curr_mp4.nil?
+          movies_recently_watched = File.stat(curr_mp4).atime
           curr_mp4 = curr_mp4.split(remove_path)[1]
         end
 
         movie_api_name = curr_movie.gsub(" ", "+")
 
-        movies[curr_movie] = {path: curr_movie_path.split(remove_path)[1], api_name: movie_api_name, api: "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey="+movie_api_name+"&qwwcbmq36xddhrcbpwwqmb5m&q=&page_limit=1", name: curr_movie, movie: curr_mp4, logo: curr_logo, year: curr_year, date: date_modified.to_s}
+        unless curr_mp4.nil?
+          movies[curr_movie] = {path: curr_movie_path.split(remove_path)[1], api_name: movie_api_name, api: "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey="+movie_api_name+"&qwwcbmq36xddhrcbpwwqmb5m&q=&page_limit=1", name: curr_movie, movie: curr_mp4, logo: curr_logo, year: curr_year, date: date_modified.to_s, movies_recently_watched_date: movies_recently_watched.to_s }
+        end
 
       end
     end

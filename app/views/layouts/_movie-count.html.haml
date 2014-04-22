@@ -3,6 +3,9 @@
   - if params[:nav] == "year"
     %span
       = "#{params[:year]} - #{@count_all_movies} Total Movies"
+  - elsif params[:nav] == "Recently Watched"
+    %span
+      = "#{params[:nav]} - Last #{@count_all_movies} Movies"
   - elsif params[:nav] != nil
     %span
       = "#{params[:nav]} - #{@count_all_movies} Total Movies"

@@ -2,6 +2,8 @@
   %ul.nav.sidebar
     %li.recently-added
       %a{:href => "/movies/recent"} Recently Added
+    %li.recently-watched
+      %a{:href => "/movies/recently_watched"} Recently Watched
     %li.alphabetically
       %a{:href => "/movies"} Alphabetically
     - @all_movie_years.each do |movie_list_by_year|
