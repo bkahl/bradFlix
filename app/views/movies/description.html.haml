@@ -6,63 +6,72 @@
   .container
 
     %div.row
-      %div.page-header
-        %h2
-          = @movie_description[:rotten_api]["title"]
+      %div.col-md-12
+        %div.page-header
+          %h2
+            = @movie_description[:rotten_api]["title"]
 
-      %div.artwork
-        -# Link to movie
-        %a{:href => "#{@movie_description[:movie]}"}
-          %img.img-responsive{:src => "#{@movie_description[:logo]}", :alt => "#{@movie_description[:logo]}", :style => "max-width: 250px; height: 375px;"}
+    %div.row
+      %div.col-lg-3.col-md-4.col-sm-5
+        %div.artwork
+          -# Link to movie
+          %a{:href => "#{@movie_description[:movie]}"}
+            %img.img-responsive{:src => "#{@movie_description[:logo]}", :alt => "#{@movie_description[:logo]}", :style => "max-width: 250px; height: 375px;"}
+            -#
+            -#%video{:autoplay => "", :height => "240", :width => "320"}
+            -#  %source{:src => "#{@movie_description[:movie]}", :type => "video/mp4"}
+            -#    Your browser does not support the video tag.
 
-      %br
+      %div.hidden-lg.hidden-md.hidden-sm
+        %br
 
-      %div
-        // Certified Fresh, Rotten
-        %span.strong Critics Score:
-        %span{:class => "#{@movie_description[:rotten_api]["ratings"]["critics_rating"].downcase.gsub(" ", "_")}"}
-        %span
-          = @movie_description[:rotten_api]["ratings"]["critics_score"]
-        %span %
-
-      %div
-        // Upright, Spilled
-        %span.strong Audience Score:
-        - if @movie_description[:rotten_api]["ratings"]["audience_rating"].blank?
-        - else
-          %span{:class => "#{@movie_description[:rotten_api]["ratings"]["audience_rating"].downcase.gsub(" ", "_")}"}
-        %span
-          = @movie_description[:rotten_api]["ratings"]["audience_score"]
-        %span %
-
-      %div
-        %span.strong Rating:
-        %span
-          = @movie_description[:rotten_api]["mpaa_rating"]
-
-      %div
-        %span.strong Year:
-        %span
-          = @movie_description[:rotten_api]["year"]
-
-      %div
-        %span.strong Runtime:
-        %span
-          = @movie_description[:rotten_api]["runtime"]
-        %span mins
-
-      %div
-        %h3 Cast
-      %div
-        - @movie_description[:rotten_api]["abridged_cast"].each do |actor|
+      %div.col-lg-9.col-md-8.col-sm-7
+        %div
+          // Certified Fresh, Rotten
+          %span.strong Critics Score:
+          %span{:class => "#{@movie_description[:rotten_api]["ratings"]["critics_rating"].downcase.gsub(" ", "_")}"}
           %span
-            = actor["name"]
-          %br
+            = @movie_description[:rotten_api]["ratings"]["critics_score"]
+          %span %
 
-      -# Show Synopsis if value isn't blank
-      - if @movie_description[:rotten_api]["synopsis"].blank?
-      - else
         %div
-          %h3 Synopsis
+          // Upright, Spilled
+          %span.strong Audience Score:
+          - if @movie_description[:rotten_api]["ratings"]["audience_rating"].blank?
+          - else
+            %span{:class => "#{@movie_description[:rotten_api]["ratings"]["audience_rating"].downcase.gsub(" ", "_")}"}
+          %span
+            = @movie_description[:rotten_api]["ratings"]["audience_score"]
+          %span %
+
         %div
-          = @movie_description[:rotten_api]["synopsis"]
+          %span.strong Rating:
+          %span
+            = @movie_description[:rotten_api]["mpaa_rating"]
+
+        %div
+          %span.strong Year:
+          %span
+            = @movie_description[:rotten_api]["year"]
+
+        %div
+          %span.strong Runtime:
+          %span
+            = @movie_description[:rotten_api]["runtime"]
+          %span mins
+
+        %div
+          %h3 Cast
+        %div
+          - @movie_description[:rotten_api]["abridged_cast"].each do |actor|
+            %span
+              = actor["name"]
+            %br
+
+        -# Show Synopsis if value isn't blank
+        - if @movie_description[:rotten_api]["synopsis"].blank?
+        - else
+          %div
+            %h3 Synopsis
+          %div
+            = @movie_description[:rotten_api]["synopsis"]

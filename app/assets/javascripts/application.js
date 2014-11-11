@@ -16,3 +16,4 @@
 //= require vendors/bootstrap
 //= require vendors/jquery.lazyload
 //= require vendors/typeahead
+//= require vendors/sticky-sidebar

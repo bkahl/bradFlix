@@ -12,7 +12,6 @@ gem 'bundler'
 gem 'devise'
 gem 'will_paginate'
 gem 'newrelic_rpm'
-gem 'jquery-rails'
 gem 'geokit'
 gem 'execjs'
 gem 'therubyracer'
@@ -25,7 +24,6 @@ gem 'angular-ui-rails'
 gem 'thin'
 
 gem 'httparty'
-
 
 gem 'bootstrap-sass', :git => 'git://github.com/thomas-mcdonald/bootstrap-sass.git', :branch => '3'
 gem 'bootstrap-switch-rails'

@@ -20,7 +20,7 @@
 
   = javascript_include_tag "application"
 
-  - if params[:nav] == "year" or params[:nav] == "Alphabetically" or params[:nav] == "Recently Added" or params[:nav] == "Recently Watched" or params[:nav] == "description"
+  - if params[:nav] == "year" or params[:nav] == "Alphabetically" or params[:nav] == "Recently Added" or params[:nav] == "Recently Watched" or params[:nav] == "description" or params[:nav] == "TV"
     :javascript
       $(function() {
 
@@ -69,7 +69,6 @@
         });
 
         // Set current route to active within the sidebar navigation
-        console.log("hey");
 
         if ("#{params[:nav]}" === "year") {
           $(".#{params[:year]}").addClass("active");

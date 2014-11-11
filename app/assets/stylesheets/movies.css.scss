@@ -5,6 +5,13 @@
 .bradflix-sidebar {
   .sidebar {
     background: #f8f8f8;
+    font-size: 9px;
+
+    > li {
+      a {
+        padding: 5px 15px;
+      }
+    }
 
     a {
       color: #777;
@@ -31,7 +38,7 @@
   }
 }
 
-.movieTitleAndCount {
+.count {
   margin: 0 0 8px 0;
   font-size: 14px;
   color: #777;

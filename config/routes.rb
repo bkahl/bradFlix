@@ -11,4 +11,7 @@ BradFlix::Application.routes.draw do
   match '/movies/:year', :to => 'movies#year', :as => 'movie_year', :nav => 'year'
   match '/movies/:year/:movie_name', :to => 'movies#description', :as => 'movie_name', :nav => 'description'
 
+  #match tv shows
+  match '/tv', :to => 'tv#index', :nav => 'TV'
+
 end

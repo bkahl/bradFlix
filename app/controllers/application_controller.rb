@@ -6,10 +6,6 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  def index
-
-  end
-
   def get_all_movies_by_year
     movie_path = '/Volumes/Mac.Movies/Ripped DVDs/Movies/'
     remove_path = '/Volumes/Mac.Movies'
@@ -45,6 +41,7 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    puts movies
     return movies
   end
 
@@ -143,6 +140,18 @@ class ApplicationController < ActionController::Base
     #puts json["movies"][0]["runtime"]
     #puts json["movies"][0]["mpaa_rating"]
 
+  end
+
+  private
+
+  def get_all_movie_titles(movies)
+    movie_names = Array.new
+
+    movies.each do |movie|
+      movie_names.push(movie[1])
+    end
+
+    return movie_names.to_json
   end
 
 end

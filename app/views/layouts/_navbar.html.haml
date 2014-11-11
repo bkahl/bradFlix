@@ -14,6 +14,9 @@
       #bs-example-navbar-collapse-1.collapse.navbar-collapse
         %ul.nav.navbar-nav
           %li.dropdown.hidden-md.hidden-lg.hidden-sm
+            %a{:href => "/tv/"}
+              TV Shows
+          %li.dropdown.hidden-md.hidden-lg.hidden-sm
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
               Movies
               %b.caret
@@ -26,6 +29,7 @@
               %li.divider
               %li
                 %a{:href => "/movies"} Alphabetically
+              %li.divider
               - @all_movie_years.each do |movie_list_by_year|
                 %li.divider
                 %li

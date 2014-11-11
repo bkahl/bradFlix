@@ -38,16 +38,4 @@ class MoviesController < ApplicationController
     @movie_names = get_all_movie_titles(@movies_recent)
   end
 
-  private
-
-  def get_all_movie_titles(movies)
-    movie_names = Array.new
-
-    movies.each do |movie|
-      movie_names.push(movie[1])
-    end
-
-    return movie_names.to_json
-  end
-
 end
