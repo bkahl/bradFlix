@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_filter :authenticate_user!
+  #before_filter :authenticate_user!
 
   before_filter :get_all_movies_by_year
   before_filter :get_all_movies

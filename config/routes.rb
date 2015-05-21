@@ -1,6 +1,6 @@
 BradFlix::Application.routes.draw do
 
-  devise_for :users
+  #devise_for :users
 
   root :to => 'movies#recent', :nav => 'Recently Added'
 
@@ -13,5 +13,8 @@ BradFlix::Application.routes.draw do
 
   #match tv shows
   match '/tv', :to => 'tv#index', :nav => 'TV'
+
+  #restart bradflix on local iTunes
+  match '/restart', :to => 'restart#index'
 
 end
